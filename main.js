@@ -20,15 +20,12 @@ function printReceipt(barcodes) {
         var each = barcodes[i]; 
         barcodesCount[each] = (barcodesCount[each] +1 ) || 1; 
     }
-    console.log(barcodesCount);
     for(let i = 0; i < items.length; i++) {
         if(barcodes.indexOf(items[i]['id']) > -1) {
-            console.log("tsetttttt")
             barcodeItemNames[items[i]['id']] = items[i]['name'];
             barcodeItemPrice[items[i]['id']] = items[i]['price'];
         }
     }
-    console.log(barcodeItemPrice);
     var Receipt = "Receipts\n" + "------------------------------------------------------------\n";
     for(let id in barcodesCount) {
         Receipt += barcodeItemNames[id] + '\t\t\t\t\t' +barcodeItemPrice[id] + '\t\t\t' +barcodesCount[id] + '\n';
@@ -38,3 +35,5 @@ function printReceipt(barcodes) {
     Receipt += "------------------------------------------------------------\n" + "Price: " + totalAmount;
     return Receipt;
 }
+
+module.exports = printReceipt;
